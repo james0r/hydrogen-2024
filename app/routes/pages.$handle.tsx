@@ -59,7 +59,19 @@ export default function Page() {
       <header>
         <h1>{page.title}</h1>
       </header>
-      <main dangerouslySetInnerHTML={{__html: page.body}} />
+      <main>
+        <div dangerouslySetInnerHTML={{__html: page.body}}>
+          
+        </div>
+        <div>
+          <h2>
+            Page Meta Text
+          </h2>
+          {
+            page?.metafields[0]?.value
+          }
+        </div>
+      </main>
     </div>
   );
 }
@@ -78,6 +90,11 @@ const PAGE_QUERY = `#graphql
       seo {
         description
         title
+      }
+      metafields(identifiers: {key: "page_meta_text", namespace: "custom"}) {
+        id
+        key
+        value
       }
     }
   }
