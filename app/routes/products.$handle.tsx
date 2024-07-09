@@ -145,6 +145,10 @@ export default function Product() {
   const {product, variants} = useLoaderData<typeof loader>();
   const {selectedVariant} = product;
   return (
+    <>
+    <div className="h-[100px] bg-blue-500 my-12">
+      I'm demonstrating Tailwind
+    </div>
     <div className="product">
       <ProductImage image={selectedVariant?.image} />
       <ProductMain
@@ -168,6 +172,7 @@ export default function Product() {
         }}
       />
     </div>
+    </>
   );
 }
 
